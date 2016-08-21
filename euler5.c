@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <sys/resource.h>
+
 int smallestDiv(int max, int num)
 {
     printf("num = %d\n",num);
@@ -13,15 +14,14 @@ int smallestDiv(int max, int num)
     if(check == 0)
         return num;
 
-    return smallestDiv(max, num+2);
+    return smallestDiv(max, num+1);
 }
-
 
 int main()
 {
     struct rlimit lim = {9999999999,9999999999};
     setrlimit(RLIMIT_STACK, &lim);
 
-    printf("%d\n",smallestDiv(20, 2));
+    printf("%d\n",smallestDiv(20, 1));
     return 0;
 }
